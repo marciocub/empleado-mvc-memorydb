@@ -17,10 +17,20 @@ public class PersonaController {
 	@Autowired
 	private PersonaServiceAPI personaServiceAPI;
 
-	@RequestMapping("/")
-	public String index(Model model){
+	@RequestMapping("/list")
+	public String list(Model model){
 		model.addAttribute("list", personaServiceAPI.getAll());
-		return "index";
+		return "list";
+	}
+	
+	@RequestMapping("list/volver")
+	public String volver(Model model){
+		return("redirect:/");
+	}
+	
+	@RequestMapping("save/list")
+	public String cancelar(Model model){
+		return("redirect:/list");
 	}
 	
 	@GetMapping("/save/{id}")
